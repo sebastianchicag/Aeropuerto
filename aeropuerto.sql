@@ -195,10 +195,6 @@ CREATE TABLE factura(
 
 
 	
-/*Sentencia para hacer un cambio a una tabla en este caso se añade una columna nueva descripcion en la factura del
-vuelo*/
-	 	ALTER TABLE factura ADD fecha_reg DATETIME
-	
 /*Sentencia que se usa para devolver valores con un campo en especifico utilizando condicion where y la funcion
 lower hace minuscula un campo*/
 		SELECT nombre_persona,total,asiento,clase,origen,destino ,estado,fecha_reg FROM factura INNER JOIN vuelo ON 
