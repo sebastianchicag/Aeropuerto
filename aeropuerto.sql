@@ -19,6 +19,9 @@ CREATE TABLE persona(
 		correo varchar(50) NOT NULL,
 		PRIMARY KEY(cod_persona))/*Primary key se utiliza para asignar llave la llave primaria como campo unico*/
 
+/*Sentencia para hacer un cambio a una tabla en este caso se añade una columna nueva fecha_reg para registar la 
+fecha actual con datetime*/
+	 	ALTER TABLE persona ADD fecha_reg DATETIME
 
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE marca(
