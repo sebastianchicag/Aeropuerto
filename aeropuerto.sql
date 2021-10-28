@@ -32,6 +32,23 @@ CREATE TABLE persona(
 /*Sentencia para hacer un cambio a una tabla en este caso se añade una columna nueva fecha_reg para registar la 
 fecha actual con datetime*/
 	 	ALTER TABLE persona ADD fecha_reg DATETIME
+	 	
+/*El comando select se utiliza para recuperar datos de una o más tablas*/
+		SELECT * FROM persona
+	
+/*La sentencia update se utiliza para modificar valores en una tabla.*/
+		UPDATE persona SET tipo_documento = 'Ti' WHERE cod_persona = 5
+	
+/*Sentencia que me permite contar  todos los registros, se guarda con un alis utilizando as por ultimo 
+se agrupan por sexo*/
+		SELECT sexo , count(*) as cantidad FROM persona GROUP BY sexo
+	
+/*Sentencia que se usa para devolver valores con un campo en especifico utilizando condicion where y la funcion
+lower hace minuscula un campo */
+		SELECT * FROM persona WHERE LOWER(tipo_documento)= 'Cedula'
+	
+/*La palabra clave ASC se usa para ordenar el conjunto de resultados de la consulta en orden ascendente*/
+		SELECT * FROM persona ORDER BY nombre_persona ASC	
 
 
 /*Estructura para crear una tabla con el comando create table*/
@@ -48,6 +65,16 @@ CREATE TABLE marca(
 	(3, 'Airbus A340'),
 	(4,  'Airbus A330'),
 	(5, 'Boeing 757')
+	
+
+/*El comando select se utiliza para recuperar datos de una o más tablas*/
+		SELECT * FROM marca
+	
+/*La sentencia update se utiliza para modificar valores en una tabla.*/
+		UPDATE marca SET nombre = 'Boeing 737' WHERE cod_marca = 5
+	
+/*Sentencia que busca todos los registros con la palabra Boeing y cuenta cuantos registros existen*/
+		SELECT nombre AS marca,count(*) as cantidad FROM marca WHERE nombre LIKE '%Boeing%'
 
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE avion(
@@ -66,8 +93,10 @@ CREATE TABLE avion(
 	(3, 'El avión Airbus A340 es un avión jet comercial de pasajeros de largo alcance de fuselaje ancho y cuatro motores','370 pasajeros',3),
 	(4,  'El Airbus A330 es un avión jet de fuselaje ancho bimotor construido por Airbus','288 pasajeros',4),
 	(5, 'El Boeing 757 es un avión jet de fuselaje estrecho de dos motores contruido por la compañía Boeing ','200 pasajeros',5)	
-		
 
+/*Los join sirven para combinar filas de dos o más tablas basándose en un campo común entre ellas*/
+		SELECT nombre AS marca ,descripcion FROM avion INNER JOIN marca ON marca.cod_marca = avion.marca
+		
 /*Estructura para crear una tabla con el comando create table*/	
 CREATE TABLE origen(
 		cod_origen INT(11) AUTO_INCREMENT NOT NULL,
@@ -161,4 +190,29 @@ CREATE TABLE factura(
 	(2, 760.250, '15K', 'Clase Ejecutiva', now(), 2),
 	(3, 450.000, '18E', 'Primera Clase', now(), 4),
 	(4, 320.000, '10A', 'Clase Economica', now(), 2),
-	(5, 980.350, '30D', 'Clase Ejecutiva', now(), 5)	
+	(5, 980.350, '30D', 'Clase Ejecutiva', now(), 5)
+	
+/*Sentencia que se usa para devolver valores con un campo en especifico utilizando condicion where y la funcion
+lower hace minuscula un campo*/
+		SELECT nombre_persona,total,asiento,clase,origen,destino ,estado,fecha_reg FROM factura INNER JOIN vuelo ON 
+		vuelo.cod_vuelo = factura.cod_vuelo INNER JOIN persona ON persona.cod_persona = vuelo.cod_vuelo INNER JOIN estado ON 
+		estado.cod_estado = vuelo.cod_estado INNER JOIN origen ON origen.cod_origen = vuelo.cod_origen  
+		INNER JOIN destino ON destino.cod_destino = vuelo.cod_destino WHERE LOWER(estado)= 'aterrizaje' ORDER BY nombre_persona
+		
+/*Estructura que devuelve registros existentes con tablas relacionadas y se utiliza inner join*/
+		SELECT nombre_persona,total,asiento,clase,origen,destino ,estado,fecha_reg FROM factura INNER JOIN vuelo ON 
+		vuelo.cod_vuelo = factura.cod_vuelo INNER JOIN persona ON persona.cod_persona = vuelo.cod_vuelo INNER JOIN estado ON 
+		estado.cod_estado = vuelo.cod_estado INNER JOIN origen ON origen.cod_origen = vuelo.cod_origen  
+		INNER JOIN destino ON destino.cod_destino = vuelo.cod_destino ORDER BY nombre_persona
+		
+/*Consulta que se utiliza para obtener el valor a pagar mas alto para ello se utiliza la clausula max*/
+		SELECT nombre_persona,MAX(total) AS total,asiento,clase,origen,destino ,estado,fecha_reg FROM factura INNER JOIN vuelo ON 
+		vuelo.cod_vuelo = factura.cod_vuelo INNER JOIN persona ON persona.cod_persona = vuelo.cod_vuelo INNER JOIN estado ON 
+		estado.cod_estado = vuelo.cod_estado INNER JOIN origen ON origen.cod_origen = vuelo.cod_origen  
+		INNER JOIN destino ON destino.cod_destino = vuelo.cod_destino ORDER BY nombre_persona
+		
+/*Consulta que se utiliza para obtener el valor a pagar mas bajo para ello se utiliza la clausula max*/
+		SELECT nombre_persona,MIN(total) AS total,asiento,clase,origen,destino ,estado,fecha_reg FROM factura INNER JOIN vuelo ON 
+		vuelo.cod_vuelo = factura.cod_vuelo INNER JOIN persona ON persona.cod_persona = vuelo.cod_vuelo INNER JOIN estado ON 
+		estado.cod_estado = vuelo.cod_estado INNER JOIN origen ON origen.cod_origen = vuelo.cod_origen  
+		INNER JOIN destino ON destino.cod_destino = vuelo.cod_destino ORDER BY nombre_persona	
