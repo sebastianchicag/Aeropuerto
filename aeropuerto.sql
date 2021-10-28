@@ -137,8 +137,8 @@ CREATE TABLE estado(
 	(2, 'Aterrizaje')
 		
 
-		/*Estructura para crear una tabla con el comando create table*/
-		CREATE TABLE vuelo(
+/*Estructura para crear una tabla con el comando create table*/
+CREATE TABLE vuelo(
 		cod_vuelo INT(11) AUTO_INCREMENT NOT NULL,
 		cod_origen INT(11) NOT NULL,
 		cod_destino INT(11) NOT NULL,
@@ -191,6 +191,10 @@ CREATE TABLE factura(
 	(3, 450.000, '18E', 'Primera Clase', now(), 4),
 	(4, 320.000, '10A', 'Clase Economica', now(), 2),
 	(5, 980.350, '30D', 'Clase Ejecutiva', now(), 5)
+	
+/*Sentencia para hacer un cambio a una tabla en este caso se añade una columna nueva descripcion en la factura del
+vuelo*/
+	 	ALTER TABLE factura ADD fecha_reg DATETIME
 	
 /*Sentencia que se usa para devolver valores con un campo en especifico utilizando condicion where y la funcion
 lower hace minuscula un campo*/
