@@ -156,9 +156,9 @@ CREATE TABLE factura(
 		
 		
 /*Sentencia sql que se utiliza para registrar informacióon en una tabla con el comando insert into*/ 
-	INSERT INTO factura (cod_factura, total,asiento,clase,fecha_reg,cod_vuelo) VALUES 
-	(1, 550.000, '23A', 'Clase Economica', now(), 1),
-	(2, 760.250, '15K', 'Clase Ejecutiva', now(), 2),
-	(3, 450.000, '18E', 'Primera Clase', now(), 4),
-	(4, 320.000, '10A', 'Clase Economica', now(), 2),
-	(5, 980.350, '30D', 'Clase Ejecutiva', now(), 5)	
+	INSERT INTO factura (cod_factura, total,asiento,clase,fecha_reg,cod_vuelo,descripcion) VALUES 
+	(1, 550.000, '23A', 'Clase Economica', NOW(), 1,'Vuelo con acompañante'),
+	(2, 760.250, '15K', 'Clase Ejecutiva', NOW(), 2,'Vuelo con escala'),
+	(3, 450.000, '18E', 'Primera Clase', now(), 4,'Vuelo sin escala'),
+	(4, 320.000, '10A', 'Clase Economica', NOW(), 2,'Vuelo directo'),
+	(5, 980.350, '30D', 'Clase Ejecutiva', NOW(), 5,'Vuelo con fuertes lluvias')	
