@@ -48,8 +48,8 @@ lower hace minuscula un campo */
 		SELECT * FROM persona WHERE LOWER(tipo_documento)= 'Cedula'
 	
 /*La palabra clave ASC se usa para ordenar el conjunto de resultados de la consulta en orden ascendente*/
-		SELECT * FROM persona ORDER BY nombre_persona ASC	
-
+		SELECT * FROM persona ORDER BY nombre_persona ASC
+		
 
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE marca(
