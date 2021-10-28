@@ -19,9 +19,20 @@ CREATE TABLE persona(
 		correo varchar(50) NOT NULL,
 		PRIMARY KEY(cod_persona))/*Primary key se utiliza para asignar llave la llave primaria como campo unico*/
 
+
+/*Sentencia sql que se utiliza para registrar informacióon en una tabla con el comando insert into*/
+	INSERT INTO persona (cod_persona, doc_persona, tipo_documento, nombre_persona, apellido_persona, fecha_nac, sexo, celular, correo,fecha_reg) VALUES
+	(1, '1094955221', 'Cedula', 'Juan Sebastian', 'Chica Giraldo', '1996-02-13', 'H', '3235807900', 'juansebastianchicagiraldo@gmail.com',NOW()),
+	(2, '1093945332', 'Cedula', 'Juan Jose', 'Ospina Zapata', '1994-12-20', 'H', '3245678909', 'jjose20@gmail.com',NOW()),
+	(3, '9602132010', 'Ti', 'Manuel Jose', 'Garcia Rivera', '2004-08-18', 'H', '3234567890', 'juansebastianchicagiraldo@gmail.com',NOW()),
+	(4, '1092934599', 'Cedula', 'Maria Cristina', 'Rivera Giraldo', '1995-01-19', 'M', '3234568879', 'mariac@gmail.com',NOW()),
+	(5, '1093456485', 'Cedula', 'Maria Fernanda', 'Ospina Garcia', '1994-11-12', 'M', '3234567890', 'marifer@gmail.com',NOW())
+
+
 /*Sentencia para hacer un cambio a una tabla en este caso se añade una columna nueva fecha_reg para registar la 
 fecha actual con datetime*/
 	 	ALTER TABLE persona ADD fecha_reg DATETIME
+
 
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE marca(
@@ -29,6 +40,14 @@ CREATE TABLE marca(
 		nombre VARCHAR(50) NOT NULL,
 		PRIMARY KEY(cod_marca))/*Primary key se utiliza para asignar llave la llave primaria como campo unico*/
 		
+		
+/*Sentencia sql que se utiliza para registrar informacióon en una tabla con el comando insert into*/
+	INSERT INTO marca (cod_marca,nombre) VALUES
+	(1, 'Boeing 747'),
+	(2, 'Boeing 777'),
+	(3, 'Airbus A340'),
+	(4,  'Airbus A330'),
+	(5, 'Boeing 757')
 
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE avion(
@@ -38,7 +57,15 @@ CREATE TABLE avion(
 		marca INT(11) NOT NULL,
 		CONSTRAINT fk_Marca FOREIGN KEY (marca) REFERENCES marca (cod_marca),/*Estructura que relaciona 
 		las tablas avion y marca con la llave foranea marca que pertenece a la tabla avion 
-		y cod_marca como llave primaria que perteneciente a la tabla marca*/		
+		y cod_marca como llave primaria que perteneciente a la tabla marca*/	
+		
+/*Sentencia sql que se utiliza para registrar informacióon en una tabla con el comando insert into*/	
+	INSERT INTO avion (cod_avion,descripcion,capacidad,marca) VALUES
+	(1, 'es de los aviones más reconocibles del mundo','467 pasajeros',1),
+	(2, 'El Boeing 777 es un avión jet bimotor, de fuselaje ancho y de largo alcance manufacturado por la Boeing','368 pasajeros',2),
+	(3, 'El avión Airbus A340 es un avión jet comercial de pasajeros de largo alcance de fuselaje ancho y cuatro motores','370 pasajeros',3),
+	(4,  'El Airbus A330 es un avión jet de fuselaje ancho bimotor construido por Airbus','288 pasajeros',4),
+	(5, 'El Boeing 757 es un avión jet de fuselaje estrecho de dos motores contruido por la compañía Boeing ','200 pasajeros',5)	
 		
 
 /*Estructura para crear una tabla con el comando create table*/	
@@ -47,6 +74,13 @@ CREATE TABLE origen(
 		origen VARCHAR	(50),
 		PRIMARY KEY(cod_origen))/*Primary key se utiliza para asignar llave la llave primaria como campo unico*/	
 
+/*Sentencia sql que se utiliza para registrar informacióon en una tabla con el comando insert into*/	
+	INSERT INTO origen (cod_origen ,origen) VALUES
+	(1, 'Armenia'),
+	(2, 'Bogota'),
+	(3, 'Cali'),
+	(4, 'Pereira'),
+	(5, 'Bucaramanga')   
 		
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE destino(
@@ -54,12 +88,25 @@ CREATE TABLE destino(
 		destino VARCHAR	(50),
 		PRIMARY KEY(cod_destino))/*Primary key se utiliza para asignar llave la llave primaria como campo unico*/
 		
+/*Sentencia sql que se utiliza para registrar informacióon en una tabla con el comando insert into*/   
+	INSERT INTO destino (cod_destino ,destino) VALUES
+	(1, 'Ibague'),
+	(2, 'Barranquilla'),
+	(3, 'Cartagena'),
+	(4, 'Manizales'),
+	(5, 'Pasto')  
 		
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE estado(
 		cod_estado INT(11) AUTO_INCREMENT NOT NULL,
 		estado VARCHAR(50),
 		PRIMARY KEY(cod_estado))/*Primary key se utiliza para asignar llave la llave primaria como campo unico*/
+		
+/*Sentencia sql que se utiliza para registrar informacióon en una tabla con el comando insert into*/ 
+	INSERT INTO estado (cod_estado ,estado) VALUES
+	(1, 'Despegue'),
+	(2, 'Aterrizaje')
+		
 
 		/*Estructura para crear una tabla con el comando create table*/
 		CREATE TABLE vuelo(
@@ -86,7 +133,14 @@ CREATE TABLE estado(
 		y cod_persona como llave primaria que perteneciente a la tabla persona*/
 		PRIMARY KEY(cod_vuelo))/*Primary key se utiliza para asignar llave la llave primaria como campo unico*/
 
-
+/*Sentencia sql que se utiliza para registrar informacióon en una tabla con el comando insert into*/ 
+	INSERT INTO vuelo (cod_vuelo, cod_origen,cod_destino,cod_estado,cod_marca,cod_persona) VALUES 
+	(1, 5, 4, 2, 3, 1),
+	(2, 3, 3, 1, 5, 3),
+	(3, 4, 2, 1, 2, 4),
+	(4, 2, 1, 2, 2, 2),
+	(5, 1, 5, 2, 1, 5)
+		
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE factura(
 		cod_factura INT(11) AUTO_INCREMENT NOT NULL,
@@ -99,3 +153,12 @@ CREATE TABLE factura(
 		las tablas factura y vuelo con la llave foranea cod_vuelo que pertenece a la tabla vuelo 
 		y cod_factura como llave primaria que perteneciente a la tabla factura*/
 		PRIMARY KEY(cod_factura))/*Primary key se utiliza para asignar llave la llave primaria como campo unico*/	
+		
+		
+/*Sentencia sql que se utiliza para registrar informacióon en una tabla con el comando insert into*/ 
+	INSERT INTO factura (cod_factura, total,asiento,clase,fecha_reg,cod_vuelo) VALUES 
+	(1, 550.000, '23A', 'Clase Economica', now(), 1),
+	(2, 760.250, '15K', 'Clase Ejecutiva', now(), 2),
+	(3, 450.000, '18E', 'Primera Clase', now(), 4),
+	(4, 320.000, '10A', 'Clase Economica', now(), 2),
+	(5, 980.350, '30D', 'Clase Ejecutiva', now(), 5)	
