@@ -76,11 +76,15 @@ CREATE TABLE marca(
 /*Sentencia que busca todos los registros con la palabra Boeing y cuenta cuantos registros existen*/
 		SELECT nombre AS marca,count(*) as cantidad FROM marca WHERE nombre LIKE '%Boeing%'
 		
+
 /*Sentencia que selecciona todos los registros que tengan la palabra Boeing*/		
 		SELECT * FROM marca WHERE nombre LIKE '%Boeing%'
 
 /*Sentencia que se usa para contar los registros de una tabla*/		
 SELECT COUNT(*) as cantidad FROM marca
+
+		
+>>>>>>> desarrollo
 
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE avion(
@@ -191,16 +195,15 @@ CREATE TABLE factura(
 		
 		
 /*Sentencia sql que se utiliza para registrar informacióon en una tabla con el comando insert into*/ 
-	INSERT INTO factura (cod_factura, total,asiento,clase,fecha_reg,cod_vuelo) VALUES 
-	(1, 550.000, '23A', 'Clase Economica', now(), 1),
-	(2, 760.250, '15K', 'Clase Ejecutiva', now(), 2),
-	(3, 450.000, '18E', 'Primera Clase', now(), 4),
-	(4, 320.000, '10A', 'Clase Economica', now(), 2),
-	(5, 980.350, '30D', 'Clase Ejecutiva', now(), 5)
-	
-/*Sentencia para hacer un cambio a una tabla en este caso se añade una columna nueva descripcion en la factura del
-vuelo*/
-	 	ALTER TABLE factura ADD fecha_reg DATETIME
+
+	INSERT INTO factura (cod_factura, total,asiento,clase,fecha_reg,cod_vuelo,descripcion) VALUES 
+	(1, 550.000, '23A', 'Clase Economica', NOW(), 1,'Vuelo con acompañante'),
+	(2, 760.250, '15K', 'Clase Ejecutiva', NOW(), 2,'Vuelo con escala'),
+	(3, 450.000, '18E', 'Primera Clase', now(), 4,'Vuelo sin escala'),
+	(4, 320.000, '10A', 'Clase Economica', NOW(), 2,'Vuelo directo'),
+	(5, 980.350, '30D', 'Clase Ejecutiva', NOW(), 5,'Vuelo con fuertes lluvias')	
+
+
 	
 /*Sentencia que se usa para devolver valores con un campo en especifico utilizando condicion where y la funcion
 lower hace minuscula un campo*/
@@ -226,3 +229,4 @@ lower hace minuscula un campo*/
 		vuelo.cod_vuelo = factura.cod_vuelo INNER JOIN persona ON persona.cod_persona = vuelo.cod_vuelo INNER JOIN estado ON 
 		estado.cod_estado = vuelo.cod_estado INNER JOIN origen ON origen.cod_origen = vuelo.cod_origen  
 		INNER JOIN destino ON destino.cod_destino = vuelo.cod_destino ORDER BY nombre_persona	
+
