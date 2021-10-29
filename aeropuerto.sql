@@ -56,7 +56,7 @@ CREATE TABLE marca(
 		cod_marca INT(11) AUTO_INCREMENT NOT NULL,
 		nombre VARCHAR(50) NOT NULL,
 		PRIMARY KEY(cod_marca))/*Primary key se utiliza para asignar llave la llave primaria como campo unico*/
-		
+		 
 		
 /*Sentencia sql que se utiliza para registrar informacióon en una tabla con el comando insert into*/
 	INSERT INTO marca (cod_marca,nombre) VALUES
