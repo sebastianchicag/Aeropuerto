@@ -201,7 +201,8 @@ CREATE TABLE factura(
 	(4, 320.000, '10A', 'Clase Economica', NOW(), 2,'Vuelo directo'),
 	(5, 980.350, '30D', 'Clase Ejecutiva', NOW(), 5,'Vuelo con fuertes lluvias')	
 
-
+/*El comando select se utiliza para recuperar datos de una o más tablas*/
+		SELECT * FROM factura
 	
 /*Sentencia que se usa para devolver valores con un campo en especifico utilizando condicion where y la funcion
 lower hace minuscula un campo*/
