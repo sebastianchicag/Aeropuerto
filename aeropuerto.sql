@@ -48,8 +48,8 @@ lower hace minuscula un campo */
 		SELECT * FROM persona WHERE LOWER(tipo_documento)= 'Cedula'
 	
 /*La palabra clave ASC se usa para ordenar el conjunto de resultados de la consulta en orden ascendente*/
-		SELECT * FROM persona ORDER BY nombre_persona ASC	
-
+		SELECT * FROM persona ORDER BY nombre_persona ASC
+		
 
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE marca(
@@ -75,6 +75,14 @@ CREATE TABLE marca(
 	
 /*Sentencia que busca todos los registros con la palabra Boeing y cuenta cuantos registros existen*/
 		SELECT nombre AS marca,count(*) as cantidad FROM marca WHERE nombre LIKE '%Boeing%'
+		
+
+/*Sentencia que selecciona todos los registros que tengan la palabra Boeing*/		
+		SELECT * FROM marca WHERE nombre LIKE '%Boeing%'
+
+/*Sentencia que se usa para contar los registros de una tabla*/		
+SELECT COUNT(*) as cantidad FROM marca
+
 
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE avion(
