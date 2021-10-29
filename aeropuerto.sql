@@ -75,6 +75,9 @@ CREATE TABLE marca(
 	
 /*Sentencia que busca todos los registros con la palabra Boeing y cuenta cuantos registros existen*/
 		SELECT nombre AS marca,count(*) as cantidad FROM marca WHERE nombre LIKE '%Boeing%'
+		
+/*Sentencia que selecciona todos los registros que tengan la palabra Boeing*/		
+		SELECT * FROM marca WHERE nombre LIKE '%Boeing%'
 
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE avion(
