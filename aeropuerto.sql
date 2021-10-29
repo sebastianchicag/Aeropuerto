@@ -78,6 +78,8 @@ CREATE TABLE marca(
 		
 /*Sentencia que se usa para contar cuantos registros tiene una tabla*/		
 		SELECT COUNT(*) as cabtidad FROM marca
+		
+		
 
 /*Estructura para crear una tabla con el comando create table*/
 CREATE TABLE avion(
